@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Copy Text from Table Cell</title>
+</head>
+<body>
+    <!-- The table -->
+    <table id="myTable">
+        <tr>
+            <td id="cell1">Row 1, Cell 1</td>
+            <td id="cell2">Row 1, Cell 2</td>
+        </tr>
+        <tr>
+            <td id="cell3">Row 2, Cell 1</td>
+            <td id="cell4">Row 2, Cell 2</td>
+        </tr>
+    </table>
+
+    <!-- The button used to copy the text -->
+    <button onclick="copyCellText('cell1')">Copy Cell 1 Text</button>
+    <button onclick="copyCellText('cell2')">Copy Cell 2 Text</button>
+
+    <script>
+    function copyCellText(cellId) {
+        // Get the cell
+        var cell = document.getElementById(cellId);
+
+        // Copy the text inside the cell
+        navigator.clipboard.writeText(cell.innerText).then(function() {
+            alert("Copied the text: " + cell.innerText);
+        }, function(err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+    </script>
+</body>
+</html>
